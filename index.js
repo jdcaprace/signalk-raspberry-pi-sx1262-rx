@@ -41,11 +41,11 @@ module.exports = function (app) {
 
     
     
-    function createDeltaMessage(paramvalue, path) {
-      app.debug('Create Delta Message for path: ', path);
+    function createDeltaMessage(paramvalue) {
+      app.debug('Create Delta Message for path: ', options.path);
       values = [
         {
-          'path': path,
+          'path': options.path,
           'value': paramvalue
         }
       ];
@@ -67,7 +67,7 @@ module.exports = function (app) {
 	  // Read LoRa message
     function readmessage() {
       //If they are some pins configured
-	      if (param.enable == true) {
+	      if (options.enable == true) {
 	      
           payload = "None";
           console.log('Data sent to pyhton script:', payload);
@@ -80,11 +80,8 @@ module.exports = function (app) {
           
           app.debug('loramessage: ', loramessage);          
           
-          var path = param.skpath;
-          app.debug('skpath: ',path);
-
           // create message
-          var delta = createDeltaMessage(loramessage, path);
+          var delta = createDeltaMessage(loramessage);
           // send data
           app.handleMessage(plugin.id, delta);
 	      }
