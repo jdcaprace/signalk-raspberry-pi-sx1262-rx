@@ -65,11 +65,11 @@ module.exports = function (app) {
     }
 
 
-    //Init listening
+    //Init LoRa listening
     payload = "None";
     var loramessage;
     console.log('Data sent to pyhton script:', payload);
-    const python_process = spawner('python3', ['/home/pi/.signalk/node_modules/signalk-raspberry-pi-sx1262-tx/rx.py', payload]);
+    const python_process = spawner('python3', ['/home/pi/.signalk/node_modules/signalk-raspberry-pi-sx1262-rx/rx.py', payload]);
     python_process.stdout.on('data', (data) => {
       loramessage = data.toString();
       console.log('loramessage: ', loramessage);
