@@ -67,7 +67,7 @@ module.exports = function (app) {
 
     //Init listening
     payload = "None";
-    var loramessage = "";
+    var loramessage = toString("");
     console.log('Data sent to pyhton script:', payload);
     const python_process = spawner('python3', ['/home/pi/.signalk/node_modules/signalk-raspberry-pi-sx1262-tx/rx.py', payload]);
 
