@@ -67,21 +67,20 @@ module.exports = function (app) {
 
     //Init listening
     payload = "None";
-    var loramessage = toString("");
+    var loramessage;
     console.log('Data sent to pyhton script:', payload);
     const python_process = spawner('python3', ['/home/pi/.signalk/node_modules/signalk-raspberry-pi-sx1262-tx/rx.py', payload]);
+    python_process.stdout.on('data', (data) => {
+      loramessage = data.toString();
+      console.log('loramessage: ', loramessage);
+    });
 
 	  // Read LoRa message
     function readmessage() {
       //If they are some pins configured
 	      if (options.enable == true) {
-	          
-          python_process.stdout.on('data', (data) => {
-            loramessage = data.toString();
-            console.log('loramessage: ', loramessage);
-          });
-          
-          app.debug('loramessage: ', loramessage);          
+                  
+          app.debug('loramessage in read message: ', loramessage);          
           
           // create message
           var delta = createDeltaMessage(loramessage);
