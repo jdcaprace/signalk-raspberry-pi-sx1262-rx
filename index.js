@@ -42,10 +42,10 @@ module.exports = function (app) {
     
     
     function createDeltaMessage(paramvalue) {
-      app.debug('Create Delta Message for path: ', options.path);
+      app.debug('Create Delta Message for path: ', options.skpath);
       values = [
         {
-          'path': options.path,
+          'path': options.skpath,
           'value': paramvalue
         }
       ];
