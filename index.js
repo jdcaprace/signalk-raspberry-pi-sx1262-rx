@@ -80,7 +80,10 @@ module.exports = function (app) {
       //If they are some pins configured
 	      if (options.enable == true) {
                   
-          app.debug('loramessage in read message: ', loramessage);          
+          
+          loramessage = loramessage.replace(/(\r\n|\n|\r)/gm, "");
+          loramessage = loramessage.toString();
+          app.debug('loramessage after treatment: ', loramessage);          
           
           // create message
           var delta = createDeltaMessage(loramessage);
