@@ -64,17 +64,20 @@ module.exports = function (app) {
       }
     }
 
+
+    //Init listening
+    payload = "None";
+    var loramessage = "";
+    console.log('Data sent to pyhton script:', payload);
+    const python_process = spawner('python3', ['/home/pi/.signalk/node_modules/signalk-raspberry-pi-sx1262-tx/rx.py', payload]);
+
 	  // Read LoRa message
     function readmessage() {
       //If they are some pins configured
 	      if (options.enable == true) {
-	      
-          payload = "None";
-          console.log('Data sent to pyhton script:', payload);
-          const python_process = spawner('python3', ['/home/pi/.signalk/node_modules/signalk-raspberry-pi-sx1262-tx/rx.py', payload]);
-          
+	          
           python_process.stdout.on('data', (data) => {
-            var loramessage = data.toString();
+            loramessage = data.toString();
             console.log('loramessage: ', loramessage);
           });
           
