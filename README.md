@@ -8,7 +8,8 @@ The plugin has been developped for SX1262 LoRa Hat for Raspberry Pi.
 This plugin can be downloaded via the SignalK application.
 
 **WARNING** In order to properly use this plugin you need to have another Raspberry Pi equiped with the SX1262 LoRa module and the plugin signalk-raspberry-pi-sx1262-tx.
-**WARNING** The SX1262 and this plugin is NOT compatible with LoRaWAN.
+
+**WARNING** The SX1262 and this plugin is **NOT** compatible with **LoRaWAN**. However, it is ideal if you need high frequency LoRa messages with heavy payload.
 
 Some examples of possible uses are found below:
 * Receiving telemetry from your boat *at the distance up to 2km without internet*,
