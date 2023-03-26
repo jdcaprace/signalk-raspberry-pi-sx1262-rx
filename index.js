@@ -81,7 +81,7 @@ module.exports = function (app) {
 	      if (options.enable == true) {
                   
           
-          loramessage = loramessage.replace(/(\r\n|\n|\r)/gm, "");
+          //loramessage = loramessage.replace(/(\r\n|\n|\r)/gm, "");
           loramessage = loramessage.toString();
           app.debug('loramessage after treatment: ', loramessage);          
           
